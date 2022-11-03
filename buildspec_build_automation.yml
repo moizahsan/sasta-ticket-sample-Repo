@@ -12,7 +12,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t sastaticket:latest -f "{Dockerfile}" .
+      - docker build -t sastaticket:latest -f "${Dockerfile}" .
       - docker tag sastaticket:latest 678878256416.dkr.ecr.us-east-1.amazonaws.com/sastaticket:latest      
   post_build:
     commands:
