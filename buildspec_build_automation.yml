@@ -12,7 +12,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t sastaticket:latest -f "${Dockerfile}" .
+      - docker build -t sastaticket:latest -f "{Dockerfile}" .
       - docker tag sastaticket:latest 678878256416.dkr.ecr.us-east-1.amazonaws.com/sastaticket:latest      
   post_build:
     commands:
@@ -20,6 +20,6 @@ phases:
       - echo Pushing the Docker image...
       - docker push 678878256416.dkr.ecr.us-east-1.amazonaws.com/sastaticket:latest
       - echo Writing image definitions file...
-      - printf '[{"dsapi":"%s","imageUri":"%s"}]' dsapi $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"dsapi","imageUri":"678878256416.dkr.ecr.us-east-1.amazonaws.com/sastaticket:latest"}]' dsapi $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
 artifacts:
     files: imagedefinitions.json
